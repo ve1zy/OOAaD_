@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, '**' ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-test-coverage:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Restore dependencies
+      run: dotnet restore GameServer.sln
+      
+    - name: Build
+      run: dotnet build GameServer.sln --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test GameServer.sln --configuration Release --no-build --verbosity normal
+      
+    - name: Collect coverage
+      run: dotnet test GameServer.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage"
+      
+    - name: Generate coverage report
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.3.6
+      with:
+        reports: '**/coverage.cobertura.xml'
+        targetdir: 'coverage-report'
+        reporttypes: 'Html;Cobertura'
+        
+    - name: Check coverage threshold
+      uses: madrapps/coverage-check-action@v1
+      with:
+        coverage-path: 'coverage-report/Cobertura.xml'
+        minimum-coverage: 90
+        fail-coverage: true
