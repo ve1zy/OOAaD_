@@ -1,7 +1,14 @@
 name: CI
 
 on:
+<<<<<<< HEAD
   pull_request:
+=======
+  push:
+    branches: [ main, master, '**' ]
+  pull_request:
+    branches: [ main, master ]
+>>>>>>> a36ae8d (Task 2: Add CI workflow)
 
 jobs:
   build-test-coverage:
@@ -36,6 +43,7 @@ jobs:
         reporttypes: 'Html;Cobertura'
         
     - name: Check coverage threshold
+<<<<<<< HEAD
       run: |
         coverage=$(grep -oP 'line-rate="\K[0-9.]+' coverage-report/Cobertura.xml | head -1)
         coverage_percent=$(echo "$coverage * 100" | bc)
@@ -45,3 +53,10 @@ jobs:
           exit 1
         fi
         echo "Coverage ($coverage_percent%) meets 90% threshold"
+=======
+      uses: madrapps/coverage-check-action@v1
+      with:
+        coverage-path: 'coverage-report/Cobertura.xml'
+        minimum-coverage: 90
+        fail-coverage: true
+>>>>>>> a36ae8d (Task 2: Add CI workflow)
