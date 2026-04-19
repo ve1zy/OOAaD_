@@ -1,0 +1,62 @@
+name: CI
+
+on:
+<<<<<<< HEAD
+  pull_request:
+=======
+  push:
+    branches: [ main, master, '**' ]
+  pull_request:
+    branches: [ main, master ]
+>>>>>>> a36ae8d (Task 2: Add CI workflow)
+
+jobs:
+  build-test-coverage:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Restore dependencies
+      run: dotnet restore GameServer.sln
+      
+    - name: Build
+      run: dotnet build GameServer.sln --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test GameServer.sln --configuration Release --no-build --verbosity normal
+      
+    - name: Collect coverage
+      run: dotnet test GameServer.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage"
+      
+    - name: Generate coverage report
+      uses: danielpalme/ReportGenerator-GitHub-Action@5.3.6
+      with:
+        reports: '**/coverage.cobertura.xml'
+        targetdir: 'coverage-report'
+        reporttypes: 'Html;Cobertura'
+        
+    - name: Check coverage threshold
+<<<<<<< HEAD
+      run: |
+        coverage=$(grep -oP 'line-rate="\K[0-9.]+' coverage-report/Cobertura.xml | head -1)
+        coverage_percent=$(echo "$coverage * 100" | bc)
+        echo "Coverage: $coverage_percent%"
+        if (( $(echo "$coverage_percent < 90" | bc -l) )); then
+          echo "Coverage ($coverage_percent%) is below 90% threshold"
+          exit 1
+        fi
+        echo "Coverage ($coverage_percent%) meets 90% threshold"
+=======
+      uses: madrapps/coverage-check-action@v1
+      with:
+        coverage-path: 'coverage-report/Cobertura.xml'
+        minimum-coverage: 90
+        fail-coverage: true
+>>>>>>> a36ae8d (Task 2: Add CI workflow)
