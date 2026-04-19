@@ -1,3 +1,5 @@
+#nullable disable
+
 using GameServer.Models;
 using Xunit;
 
