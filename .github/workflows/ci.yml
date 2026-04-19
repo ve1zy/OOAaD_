@@ -35,21 +35,10 @@ jobs:
         targetdir: 'coverage-report'
         reporttypes: 'Html;Cobertura'
         
-    - name: Check coverage threshold (only for PRs to main)
+    - name: Check coverage threshold
       shell: bash
       run: |
         set -euo pipefail
-
-        if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
-          BASE_REF="${GITHUB_BASE_REF}";
-        else
-          BASE_REF="${GITHUB_REF_NAME}";
-        fi
-
-        if [[ "${BASE_REF}" != "main" ]]; then
-          echo "Skipping coverage gate (base ref is '${BASE_REF}', not 'main')."
-          exit 0
-        fi
 
         if [[ ! -f "coverage-report/Cobertura.xml" ]]; then
           echo "Coverage report not found at coverage-report/Cobertura.xml"
