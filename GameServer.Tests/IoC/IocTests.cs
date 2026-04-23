@@ -16,6 +16,7 @@ public class IocTests
     [Fact]
     public void RegisterSingleton_WithInstance_ReturnsSameInstance()
     {
+        Ioc.Instance.Clear();
         var testObject = new object();
         Ioc.Instance.RegisterSingleton<object>(testObject);
         
@@ -27,6 +28,7 @@ public class IocTests
     [Fact]
     public void RegisterSingleton_WithFactory_ReturnsSameInstance()
     {
+        Ioc.Instance.Clear();
         Ioc.Instance.RegisterSingleton<ITestService, TestService>();
         
         var resolved1 = Ioc.Instance.Resolve<ITestService>();
@@ -38,6 +40,7 @@ public class IocTests
     [Fact]
     public void RegisterTransient_ReturnsNewInstance()
     {
+        Ioc.Instance.Clear();
         Ioc.Instance.RegisterTransient<ITestService, TestService>();
         
         var resolved1 = Ioc.Instance.Resolve<ITestService>();
@@ -49,12 +52,14 @@ public class IocTests
     [Fact]
     public void Resolve_UnregisteredService_ThrowsArgumentException()
     {
+        Ioc.Instance.Clear();
         Assert.Throws<ArgumentException>(() => Ioc.Instance.Resolve<ITestService>());
     }
 
     [Fact]
     public void ConstructorInjection_ResolvesDependencies()
     {
+        Ioc.Instance.Clear();
         Ioc.Instance.RegisterSingleton<IDependency, Dependency>();
         Ioc.Instance.RegisterTransient<ITestService, TestService>();
         
@@ -67,6 +72,7 @@ public class IocTests
     [Fact]
     public void ConstructorInjection_WithMultipleDependencies_ResolvesAll()
     {
+        Ioc.Instance.Clear();
         Ioc.Instance.RegisterSingleton<IDependency, Dependency>();
         Ioc.Instance.RegisterSingleton<IAnotherDependency, AnotherDependency>();
         Ioc.Instance.RegisterTransient<IMultiDepService, MultiDepService>();
