@@ -1,6 +1,8 @@
 #nullable disable
 
 using GameServer.Interfaces;
+using GameServer.IoC;
+using GameServer.Models;
 using System;
 
 namespace GameServer.Commands;
@@ -9,24 +11,18 @@ public class RegisterIoCDependencyMoveCommand : ICommand
 {
     public void Execute()
     {
-        GameServer.IoC.Ioc.Register("Commands.Move", (args) =>
+        Ioc.Instance.RegisterSingleton<IMovingObject, MockMovingObject>();
+        Ioc.Instance.RegisterSingleton<Vector>(new Vector(1, 2, 3));
+        Ioc.Instance.RegisterTransient<ICommand, MoveCommand>();
+    }
+
+    private class MockMovingObject : IMovingObject
+    {
+        public Vector LastPosition { get; private set; }
+        
+        public void Move(Vector position)
         {
-            if (args is null || args.Length < 2)
-            {
-                throw new ArgumentException("Commands.Move expects 2 arguments: movableObjectKey and positionKey");
-            }
-
-            var movableObjectKey = args[0] as string;
-            var positionKey = args[1] as string;
-
-            if (movableObjectKey is null || positionKey is null)
-            {
-                throw new ArgumentException("Commands.Move expects string keys");
-            }
-
-            var movableObject = GameServer.IoC.Ioc.Resolve(movableObjectKey);
-            var position = GameServer.IoC.Ioc.Resolve(positionKey);
-            return new MoveCommand((IMovingObject)movableObject, (GameServer.Models.Vector)position);
-        });
+            LastPosition = position;
+        }
     }
 }

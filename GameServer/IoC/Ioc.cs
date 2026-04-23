@@ -2,48 +2,107 @@
 
 namespace GameServer.IoC;
 
+public enum ServiceLifetime
+{
+    Transient,
+    Singleton
+}
+
+public class ServiceDescriptor
+{
+    public Type ServiceType { get; }
+    public Type ImplementationType { get; }
+    public object? Instance { get; set; }
+    public ServiceLifetime Lifetime { get; }
+
+    public ServiceDescriptor(Type serviceType, Type implementationType, ServiceLifetime lifetime)
+    {
+        ServiceType = serviceType;
+        ImplementationType = implementationType;
+        Lifetime = lifetime;
+    }
+
+    public ServiceDescriptor(Type serviceType, object instance)
+    {
+        ServiceType = serviceType;
+        Instance = instance;
+        Lifetime = ServiceLifetime.Singleton;
+    }
+}
+
 public class Ioc
 {
-    private static readonly Dictionary<string, object> _dependencies = new();
-    private static readonly Dictionary<string, Func<object[], object>> _strategies = new();
+    private readonly Dictionary<Type, ServiceDescriptor> _services = new();
+    private static Ioc? _instance;
 
-    public static void Register(string key, Func<object[], object> strategy)
+    public static Ioc Instance => _instance ??= new Ioc();
+
+    private Ioc() { }
+
+    public void RegisterSingleton<TService, TImplementation>() where TImplementation : TService
     {
-        _strategies[key] = strategy;
+        _services[typeof(TService)] = new ServiceDescriptor(typeof(TService), typeof(TImplementation), ServiceLifetime.Singleton);
     }
 
-    public static void Register(string key, object dependency)
+    public void RegisterSingleton<TService>(TService instance)
     {
-        _dependencies[key] = dependency;
+        _services[typeof(TService)] = new ServiceDescriptor(typeof(TService), instance);
     }
 
-    public static object Resolve(string key)
+    public void RegisterTransient<TService, TImplementation>() where TImplementation : TService
     {
-        if (_strategies.TryGetValue(key, out var strategy))
-        {
-            return strategy(Array.Empty<object>());
-        }
-
-        if (_dependencies.TryGetValue(key, out var dependency))
-        {
-            return dependency;
-        }
-
-        throw new ArgumentException($"Dependency '{key}' not registered");
+        _services[typeof(TService)] = new ServiceDescriptor(typeof(TService), typeof(TImplementation), ServiceLifetime.Transient);
     }
 
-    public static object Resolve(string key, object[] args)
+    public TService Resolve<TService>()
     {
-        if (_strategies.TryGetValue(key, out var strategy))
+        return (TService)Resolve(typeof(TService));
+    }
+
+    public object Resolve(Type serviceType)
+    {
+        if (!_services.TryGetValue(serviceType, out var descriptor))
         {
-            return strategy(args);
+            throw new ArgumentException($"Service '{serviceType.Name}' not registered");
         }
 
-        if (_dependencies.TryGetValue(key, out var dependency))
+        if (descriptor.Instance != null)
         {
-            return dependency;
+            return descriptor.Instance;
         }
 
-        throw new ArgumentException($"Dependency '{key}' not registered");
+        if (descriptor.Lifetime == ServiceLifetime.Singleton && descriptor.Instance != null)
+        {
+            return descriptor.Instance;
+        }
+
+        var instance = CreateInstance(descriptor.ImplementationType);
+
+        if (descriptor.Lifetime == ServiceLifetime.Singleton)
+        {
+            descriptor.Instance = instance;
+        }
+
+        return instance;
+    }
+
+    private object CreateInstance(Type type)
+    {
+        var constructors = type.GetConstructors();
+        if (constructors.Length == 0)
+        {
+            return Activator.CreateInstance(type);
+        }
+
+        var constructor = constructors[0];
+        var parameters = constructor.GetParameters();
+        var args = new object[parameters.Length];
+
+        for (int i = 0; i < parameters.Length; i++)
+        {
+            args[i] = Resolve(parameters[i].ParameterType);
+        }
+
+        return constructor.Invoke(args);
     }
 }
