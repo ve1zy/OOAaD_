@@ -61,9 +61,9 @@ public class IocTests
     {
         Ioc.Instance.Clear();
         Ioc.Instance.RegisterSingleton<IDependency, Dependency>();
-        Ioc.Instance.RegisterTransient<ITestService, TestService>();
+        Ioc.Instance.RegisterTransient<IServiceWithDependency, ServiceWithDependency>();
         
-        var service = (TestService)Ioc.Instance.Resolve<ITestService>();
+        var service = (ServiceWithDependency)Ioc.Instance.Resolve<IServiceWithDependency>();
         
         Assert.NotNull(service);
         Assert.NotNull(service.Dependency);
@@ -86,6 +86,17 @@ public class IocTests
 
     private interface ITestService { }
     private class TestService : ITestService { }
+
+    private interface IServiceWithDependency { }
+    private class ServiceWithDependency : IServiceWithDependency
+    {
+        public IDependency Dependency { get; }
+        
+        public ServiceWithDependency(IDependency dependency)
+        {
+            Dependency = dependency;
+        }
+    }
 
     private interface IDependency { }
     private class Dependency : IDependency { }
