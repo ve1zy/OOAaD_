@@ -1,3 +1,5 @@
+using GameServer.Models;
+
 namespace GameServer.Interfaces;
 
 public interface IMovingObject
