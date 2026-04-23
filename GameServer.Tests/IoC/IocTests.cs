@@ -75,7 +75,7 @@ public class IocTests
     private interface ITestService { }
     private class TestService : ITestService
     {
-        public IDependency? Dependency { get; }
+        public IDependency Dependency { get; }
         
         public TestService(IDependency dependency)
         {
@@ -92,8 +92,8 @@ public class IocTests
     private interface IMultiDepService { }
     private class MultiDepService : IMultiDepService
     {
-        public IDependency? Dependency { get; }
-        public IAnotherDependency? AnotherDependency { get; }
+        public IDependency Dependency { get; }
+        public IAnotherDependency AnotherDependency { get; }
         
         public MultiDepService(IDependency dependency, IAnotherDependency anotherDependency)
         {
