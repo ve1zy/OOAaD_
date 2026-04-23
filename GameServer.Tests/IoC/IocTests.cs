@@ -5,6 +5,7 @@ using Xunit;
 
 namespace GameServer.Tests.IoC;
 
+[Collection("Sequential")]
 public class IocTests
 {
     public IocTests()
