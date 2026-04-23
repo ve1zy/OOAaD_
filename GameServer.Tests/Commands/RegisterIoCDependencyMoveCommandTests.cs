@@ -7,8 +7,14 @@ using Xunit;
 
 namespace GameServer.Tests.Commands;
 
+[Collection("Sequential")]
 public class RegisterIoCDependencyMoveCommandTests
 {
+    public RegisterIoCDependencyMoveCommandTests()
+    {
+        Ioc.Instance.Clear();
+    }
+
     [Fact]
     public void Execute_RegistersDependencies()
     {
