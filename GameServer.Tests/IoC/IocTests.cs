@@ -29,7 +29,6 @@ public class IocTests
     public void RegisterSingleton_WithFactory_ReturnsSameInstance()
     {
         Ioc.Instance.Clear();
-        Ioc.Instance.RegisterSingleton<IDependency, Dependency>();
         Ioc.Instance.RegisterSingleton<ITestService, TestService>();
         
         var resolved1 = Ioc.Instance.Resolve<ITestService>();
@@ -42,7 +41,6 @@ public class IocTests
     public void RegisterTransient_ReturnsNewInstance()
     {
         Ioc.Instance.Clear();
-        Ioc.Instance.RegisterSingleton<IDependency, Dependency>();
         Ioc.Instance.RegisterTransient<ITestService, TestService>();
         
         var resolved1 = Ioc.Instance.Resolve<ITestService>();
@@ -87,15 +85,7 @@ public class IocTests
     }
 
     private interface ITestService { }
-    private class TestService : ITestService
-    {
-        public IDependency Dependency { get; }
-        
-        public TestService(IDependency dependency)
-        {
-            Dependency = dependency;
-        }
-    }
+    private class TestService : ITestService { }
 
     private interface IDependency { }
     private class Dependency : IDependency { }
