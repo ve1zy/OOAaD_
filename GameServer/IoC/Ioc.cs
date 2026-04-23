@@ -54,6 +54,11 @@ public class Ioc
         _services[typeof(TService)] = new ServiceDescriptor(typeof(TService), typeof(TImplementation), ServiceLifetime.Transient);
     }
 
+    public void Clear()
+    {
+        _services.Clear();
+    }
+
     public TService Resolve<TService>()
     {
         return (TService)Resolve(typeof(TService));

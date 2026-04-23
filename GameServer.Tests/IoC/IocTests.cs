@@ -7,6 +7,11 @@ namespace GameServer.Tests.IoC;
 
 public class IocTests
 {
+    public IocTests()
+    {
+        Ioc.Instance.Clear();
+    }
+
     [Fact]
     public void RegisterSingleton_WithInstance_ReturnsSameInstance()
     {
