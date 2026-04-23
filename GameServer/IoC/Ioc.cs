@@ -33,7 +33,7 @@ public class ServiceDescriptor
 public class Ioc
 {
     private readonly Dictionary<Type, ServiceDescriptor> _services = new();
-    private static Ioc? _instance;
+    private static Ioc _instance;
 
     public static Ioc Instance => _instance ??= new Ioc();
 
