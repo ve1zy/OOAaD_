@@ -52,7 +52,7 @@ public class IocTests
         Ioc.Instance.RegisterSingleton<IDependency, Dependency>();
         Ioc.Instance.RegisterTransient<ITestService, TestService>();
         
-        var service = Ioc.Instance.Resolve<ITestService>();
+        var service = (TestService)Ioc.Instance.Resolve<ITestService>();
         
         Assert.NotNull(service);
         Assert.NotNull(service.Dependency);
@@ -65,7 +65,7 @@ public class IocTests
         Ioc.Instance.RegisterSingleton<IAnotherDependency, AnotherDependency>();
         Ioc.Instance.RegisterTransient<IMultiDepService, MultiDepService>();
         
-        var service = Ioc.Instance.Resolve<IMultiDepService>();
+        var service = (MultiDepService)Ioc.Instance.Resolve<IMultiDepService>();
         
         Assert.NotNull(service);
         Assert.NotNull(service.Dependency);

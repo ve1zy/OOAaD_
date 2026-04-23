@@ -12,7 +12,7 @@ public class ServiceDescriptor
 {
     public Type ServiceType { get; }
     public Type ImplementationType { get; }
-    public object? Instance { get; set; }
+    public object Instance { get; set; }
     public ServiceLifetime Lifetime { get; }
 
     public ServiceDescriptor(Type serviceType, Type implementationType, ServiceLifetime lifetime)
