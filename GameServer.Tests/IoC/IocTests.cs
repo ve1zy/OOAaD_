@@ -73,15 +73,7 @@ public class IocTests
     }
 
     private interface ITestService { }
-    private class TestService : ITestService
-    {
-        public IDependency Dependency { get; }
-        
-        public TestService(IDependency dependency)
-        {
-            Dependency = dependency;
-        }
-    }
+    private class TestService : ITestService { }
 
     private interface IDependency { }
     private class Dependency : IDependency { }
