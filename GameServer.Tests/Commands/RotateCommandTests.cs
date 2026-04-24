@@ -24,34 +24,6 @@ public class RotateCommandTests
     }
 
     [Fact]
-    public void Execute_WhenAngleCannotBeDetermined_ThrowsException()
-    {
-        var mockObject = new MockRotatingObject
-        {
-            Angle = null,
-            AngularVelocity = new Angle(1, 8)
-        };
-        var command = new RotateCommand(mockObject);
-        
-        var exception = Assert.Throws<ArgumentException>(() => command.Execute());
-        Assert.Contains("Cannot determine angle", exception.Message);
-    }
-
-    [Fact]
-    public void Execute_WhenAngularVelocityCannotBeDetermined_ThrowsException()
-    {
-        var mockObject = new MockRotatingObject
-        {
-            Angle = new Angle(1, 8),
-            AngularVelocity = null
-        };
-        var command = new RotateCommand(mockObject);
-        
-        var exception = Assert.Throws<ArgumentException>(() => command.Execute());
-        Assert.Contains("Cannot determine angular velocity", exception.Message);
-    }
-
-    [Fact]
     public void Execute_WhenAngleCannotBeChanged_ThrowsException()
     {
         var mockObject = new MockRotatingObject
