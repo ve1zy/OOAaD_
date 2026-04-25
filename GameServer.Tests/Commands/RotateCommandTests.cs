@@ -67,8 +67,8 @@ public class RotateCommandTests
 
     private class MockRotatingObject : IRotatingObject
     {
-        public Angle Angle { get; set; }
-        public Angle AngularVelocity { get; set; }
+        public Angle? Angle { get; set; }
+        public Angle? AngularVelocity { get; set; }
         public bool CanSetAngle { get; set; } = true;
         
         public void SetAngle(Angle angle)
