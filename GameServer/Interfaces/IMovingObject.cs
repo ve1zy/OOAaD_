@@ -1,6 +1,8 @@
+using GameServer.Models;
+
 namespace GameServer.Interfaces;
 
 public interface IMovingObject
 {
-    void Move(Vector position);
+    void Move(GameServer.Models.Vector position);
 }
