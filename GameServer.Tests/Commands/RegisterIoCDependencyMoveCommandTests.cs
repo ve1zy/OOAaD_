@@ -1,58 +1,38 @@
-#nullable disable
-
 using GameServer.Commands;
 using GameServer.Interfaces;
 using GameServer.IoC;
+using GameServer.Models;
 using Xunit;
 
 namespace GameServer.Tests.Commands;
 
-[Collection("Sequential")]
 public class RegisterIoCDependencyMoveCommandTests
 {
-    public RegisterIoCDependencyMoveCommandTests()
-    {
-        Ioc.Instance.Clear();
-    }
-
     [Fact]
-    public void Execute_RegistersDependencies()
+    public void Execute_RegistersMoveCommandDependency()
     {
+        Ioc.Clear();
+        var mockObject = new MockMovingObject();
+        var position = new Vector(1, 2, 3);
+
+        Ioc.Register("Adapters.IMovingObject", (args) => mockObject);
+        Ioc.Register("TestPosition", (args) => position);
+
         var command = new RegisterIoCDependencyMoveCommand();
-        
         command.Execute();
-        
-        var movableObject = Ioc.Instance.Resolve<IMovingObject>();
-        var position = Ioc.Instance.Resolve<GameServer.Models.Vector>();
-        var moveCommand = Ioc.Instance.Resolve<ICommand>();
-        
-        Assert.NotNull(movableObject);
-        Assert.NotNull(position);
-        Assert.NotNull(moveCommand);
+
+        var moveCommand = Ioc.Resolve("Commands.Move", "TestObject", "TestPosition");
+
         Assert.IsType<MoveCommand>(moveCommand);
     }
 
-    [Fact]
-    public void Execute_MovableObjectIsSingleton_ReturnsSameInstance()
+    private class MockMovingObject : IMovingObject
     {
-        var command = new RegisterIoCDependencyMoveCommand();
-        command.Execute();
-        
-        var movableObject1 = Ioc.Instance.Resolve<IMovingObject>();
-        var movableObject2 = Ioc.Instance.Resolve<IMovingObject>();
-        
-        Assert.Same(movableObject1, movableObject2);
-    }
+        public Vector? LastPosition { get; private set; }
 
-    [Fact]
-    public void Execute_MoveCommandIsTransient_ReturnsNewInstance()
-    {
-        var command = new RegisterIoCDependencyMoveCommand();
-        command.Execute();
-        
-        var moveCommand1 = Ioc.Instance.Resolve<ICommand>();
-        var moveCommand2 = Ioc.Instance.Resolve<ICommand>();
-        
-        Assert.NotSame(moveCommand1, moveCommand2);
+        public void Move(Vector position)
+        {
+            LastPosition = position;
+        }
     }
 }

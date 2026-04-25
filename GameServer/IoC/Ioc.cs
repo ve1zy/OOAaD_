@@ -1,113 +1,48 @@
-#nullable disable
-
 namespace GameServer.IoC;
 
-public enum ServiceLifetime
+public static class Ioc
 {
-    Transient,
-    Singleton
-}
+    private static readonly Dictionary<string, object> _dependencies = new();
+    private static readonly Dictionary<string, Func<object[], object>> _strategies = new();
 
-public class ServiceDescriptor
-{
-    public Type ServiceType { get; }
-    public Type ImplementationType { get; }
-    public object Instance { get; set; }
-    public ServiceLifetime Lifetime { get; }
-
-    public ServiceDescriptor(Type serviceType, Type implementationType, ServiceLifetime lifetime)
+    public static void Register(string key, object dependency)
     {
-        ServiceType = serviceType;
-        ImplementationType = implementationType;
-        Lifetime = lifetime;
+        _dependencies[key] = dependency;
     }
 
-    public ServiceDescriptor(Type serviceType, object instance)
+    public static void Register(string key, Func<object[], object> strategy)
     {
-        ServiceType = serviceType;
-        Instance = instance;
-        Lifetime = ServiceLifetime.Singleton;
-    }
-}
-
-public class Ioc
-{
-    private readonly Dictionary<Type, ServiceDescriptor> _services = new();
-    private static Ioc _instance;
-
-    public static Ioc Instance => _instance ??= new Ioc();
-
-    private Ioc() { }
-
-    public void RegisterSingleton<TService, TImplementation>() where TImplementation : TService
-    {
-        _services[typeof(TService)] = new ServiceDescriptor(typeof(TService), typeof(TImplementation), ServiceLifetime.Singleton);
+        _strategies[key] = strategy;
     }
 
-    public void RegisterSingleton<TService>(TService instance)
+    public static object Resolve(string key)
     {
-        _services[typeof(TService)] = new ServiceDescriptor(typeof(TService), instance);
-    }
-
-    public void RegisterTransient<TService, TImplementation>() where TImplementation : TService
-    {
-        _services[typeof(TService)] = new ServiceDescriptor(typeof(TService), typeof(TImplementation), ServiceLifetime.Transient);
-    }
-
-    public void Clear()
-    {
-        _services.Clear();
-    }
-
-    public TService Resolve<TService>()
-    {
-        return (TService)Resolve(typeof(TService));
-    }
-
-    public object Resolve(Type serviceType)
-    {
-        if (!_services.TryGetValue(serviceType, out var descriptor))
+        if (_dependencies.TryGetValue(key, out var dependency))
         {
-            throw new ArgumentException($"Service '{serviceType.Name}' not registered");
+            return dependency;
         }
 
-        if (descriptor.Instance != null)
+        if (_strategies.TryGetValue(key, out var strategy))
         {
-            return descriptor.Instance;
+            return strategy(Array.Empty<object>());
         }
 
-        if (descriptor.Lifetime == ServiceLifetime.Singleton && descriptor.Instance != null)
-        {
-            return descriptor.Instance;
-        }
-
-        var instance = CreateInstance(descriptor.ImplementationType);
-
-        if (descriptor.Lifetime == ServiceLifetime.Singleton)
-        {
-            descriptor.Instance = instance;
-        }
-
-        return instance;
+        throw new InvalidOperationException($"Dependency '{key}' not registered");
     }
 
-    private object CreateInstance(Type type)
+    public static object Resolve(string key, params object[] args)
     {
-        var constructors = type.GetConstructors();
-        if (constructors.Length == 0)
+        if (_strategies.TryGetValue(key, out var strategy))
         {
-            return Activator.CreateInstance(type);
+            return strategy(args);
         }
 
-        var constructor = constructors[0];
-        var parameters = constructor.GetParameters();
-        var args = new object[parameters.Length];
+        throw new InvalidOperationException($"Strategy '{key}' not registered");
+    }
 
-        for (int i = 0; i < parameters.Length; i++)
-        {
-            args[i] = Resolve(parameters[i].ParameterType);
-        }
-
-        return constructor.Invoke(args);
+    public static void Clear()
+    {
+        _dependencies.Clear();
+        _strategies.Clear();
     }
 }
