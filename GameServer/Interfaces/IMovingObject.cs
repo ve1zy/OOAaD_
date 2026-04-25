@@ -4,5 +4,5 @@ namespace GameServer.Interfaces;
 
 public interface IMovingObject
 {
-    void Move(Vector position);
+    void Move(Vector position, Vector velocity);
 }
