@@ -1,5 +1,6 @@
 #nullable disable
 using GameServer.Commands;
+using GameServer.Interfaces;
 using Xunit;
 
 namespace GameServer.Tests.Commands;
