@@ -3,6 +3,7 @@ using Xunit;
 
 namespace GameServer.Tests.IoC;
 
+[Collection("IocTests")]
 public class IocTests
 {
     [Fact]
