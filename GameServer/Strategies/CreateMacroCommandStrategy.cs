@@ -15,6 +15,11 @@ public class CreateMacroCommandStrategy
         var commands = new ICommand[commandKeys.Length];
         for (int i = 0; i < commandKeys.Length; i++)
         {
+            if (commandKeys[i] == null)
+            {
+                throw new ArgumentException($"Command key at index {i} cannot be null or empty");
+            }
+
             var commandKey = commandKeys[i].ToString();
             if (string.IsNullOrEmpty(commandKey))
             {
