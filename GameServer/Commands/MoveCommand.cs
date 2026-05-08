@@ -6,16 +6,15 @@ namespace GameServer.Commands;
 public class MoveCommand : ICommand
 {
     private readonly IMovingObject _movableObject;
-    private readonly GameServer.Models.Vector _position;
 
-    public MoveCommand(IMovingObject movableObject, GameServer.Models.Vector position)
+    public MoveCommand(IMovingObject movableObject)
     {
         _movableObject = movableObject;
-        _position = position;
     }
 
     public void Execute()
     {
-        _movableObject.Move(_position);
+        var newPosition = _movableObject.Position + _movableObject.Velocity;
+        _movableObject.Position = newPosition;
     }
 }
