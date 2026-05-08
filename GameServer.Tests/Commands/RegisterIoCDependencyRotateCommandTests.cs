@@ -1,6 +1,7 @@
 #nullable disable
 using GameServer.Commands;
 using GameServer.Interfaces;
+using GameServer.IoC;
 using GameServer.Models;
 using Xunit;
 
@@ -11,14 +12,14 @@ public class RegisterIoCDependencyRotateCommandTests
     [Fact]
     public void Execute_RegistersRotateCommandInIoC()
     {
-        IoC.Ioc.Clear();
+        global::GameServer.IoC.Ioc.Clear();
         var mockObject = new MockRotatingObject();
-        IoC.Ioc.Register("TestRotatingObject", (args) => mockObject);
+        global::GameServer.IoC.Ioc.Register("TestRotatingObject", (args) => mockObject);
         
         var registerCommand = new RegisterIoCDependencyRotateCommand();
         registerCommand.Execute();
         
-        var rotateCommand = (RotateCommand)IoC.Ioc.Resolve("Commands.Rotate", "TestRotatingObject");
+        var rotateCommand = (RotateCommand)global::GameServer.IoC.Ioc.Resolve("Commands.Rotate", "TestRotatingObject");
         Assert.NotNull(rotateCommand);
     }
 

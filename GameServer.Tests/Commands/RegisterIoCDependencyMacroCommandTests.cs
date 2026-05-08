@@ -10,16 +10,16 @@ public class RegisterIoCDependencyMacroCommandTests
     [Fact]
     public void Execute_RegistersMacroCommandInIoC()
     {
-        IoC.Ioc.Clear();
+        global::GameServer.IoC.Ioc.Clear();
         var mockCommand1 = new MockCommand();
         var mockCommand2 = new MockCommand();
-        IoC.Ioc.Register("TestCommand1", (args) => mockCommand1);
-        IoC.Ioc.Register("TestCommand2", (args) => mockCommand2);
+        global::GameServer.IoC.Ioc.Register("TestCommand1", (args) => mockCommand1);
+        global::GameServer.IoC.Ioc.Register("TestCommand2", (args) => mockCommand2);
         
         var registerCommand = new RegisterIoCDependencyMacroCommand();
         registerCommand.Execute();
         
-        var macroCommand = (MacroCommand)IoC.Ioc.Resolve("Commands.Macro", "TestCommand1", "TestCommand2");
+        var macroCommand = (MacroCommand)global::GameServer.IoC.Ioc.Resolve("Commands.Macro", "TestCommand1", "TestCommand2");
         Assert.NotNull(macroCommand);
         
         macroCommand.Execute();

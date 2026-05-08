@@ -1,6 +1,7 @@
 #nullable disable
 using GameServer.Commands;
 using GameServer.Interfaces;
+using GameServer.IoC;
 using GameServer.Strategies;
 using Xunit;
 
@@ -11,11 +12,11 @@ public class CreateMacroCommandStrategyTests
     [Fact]
     public void CreateMacroCommand_CreatesMacroCommandFromKeys()
     {
-        IoC.Ioc.Clear();
+        global::GameServer.IoC.Ioc.Clear();
         var mockCommand1 = new MockCommand();
         var mockCommand2 = new MockCommand();
-        IoC.Ioc.Register("TestCommand1", (args) => mockCommand1);
-        IoC.Ioc.Register("TestCommand2", (args) => mockCommand2);
+        global::GameServer.IoC.Ioc.Register("TestCommand1", (args) => mockCommand1);
+        global::GameServer.IoC.Ioc.Register("TestCommand2", (args) => mockCommand2);
         
         var strategy = new CreateMacroCommandStrategy();
         var macroCommand = strategy.CreateMacroCommand(new object[] { "TestCommand1", "TestCommand2" });
@@ -45,7 +46,7 @@ public class CreateMacroCommandStrategyTests
     [Fact]
     public void CreateMacroCommand_WhenKeyIsNull_ThrowsException()
     {
-        IoC.Ioc.Clear();
+        global::GameServer.IoC.Ioc.Clear();
         var strategy = new CreateMacroCommandStrategy();
         Assert.Throws<ArgumentException>(() => strategy.CreateMacroCommand(new object[] { null }));
     }

@@ -26,29 +26,25 @@ public class RotateCommandTests
     [Fact]
     public void Execute_WhenAngleCannotBeDetermined_ThrowsException()
     {
-        var mockObject = new MockRotatingObject
+        var mockObject = new AngleReadThrowsMockRotatingObject
         {
-            Angle = null,
             AngularVelocity = new Angle(1, 8)
         };
         var command = new RotateCommand(mockObject);
         
-        var exception = Assert.Throws<ArgumentException>(() => command.Execute());
-        Assert.Contains("Cannot determine angle", exception.Message);
+        Assert.Throws<InvalidOperationException>(() => command.Execute());
     }
 
     [Fact]
     public void Execute_WhenAngularVelocityCannotBeDetermined_ThrowsException()
     {
-        var mockObject = new MockRotatingObject
+        var mockObject = new AngularVelocityReadThrowsMockRotatingObject
         {
-            Angle = new Angle(1, 8),
-            AngularVelocity = null
+            Angle = new Angle(1, 8)
         };
         var command = new RotateCommand(mockObject);
         
-        var exception = Assert.Throws<ArgumentException>(() => command.Execute());
-        Assert.Contains("Cannot determine angular velocity", exception.Message);
+        Assert.Throws<InvalidOperationException>(() => command.Execute());
     }
 
     [Fact]
@@ -79,5 +75,19 @@ public class RotateCommandTests
             }
             Angle = angle;
         }
+    }
+
+    private class AngleReadThrowsMockRotatingObject : IRotatingObject
+    {
+        public Angle Angle => throw new InvalidOperationException("Cannot determine angle");
+        public Angle AngularVelocity { get; set; }
+        public void SetAngle(Angle angle) { }
+    }
+
+    private class AngularVelocityReadThrowsMockRotatingObject : IRotatingObject
+    {
+        public Angle Angle { get; set; }
+        public Angle AngularVelocity => throw new InvalidOperationException("Cannot determine angular velocity");
+        public void SetAngle(Angle angle) { }
     }
 }

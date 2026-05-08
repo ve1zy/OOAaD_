@@ -10,13 +10,11 @@ public class RegisterMacroMoveRotateCommand : ICommand
         IoC.Ioc.Register("Macro.Move", (args) =>
         {
             var movableObjectKey = args[0].ToString();
-            var positionKey = args[1].ToString();
             var moveCommandKey = $"Commands.Move.{movableObjectKey}";
             IoC.Ioc.Register(moveCommandKey, (innerArgs) =>
             {
                 var movableObject = IoC.Ioc.Resolve(movableObjectKey);
-                var position = IoC.Ioc.Resolve(positionKey);
-                return new MoveCommand((IMovingObject)movableObject, (GameServer.Models.Vector)position);
+                return new MoveCommand((IMovingObject)movableObject);
             });
             return new MacroCommand(new ICommand[] { (ICommand)IoC.Ioc.Resolve(moveCommandKey) });
         });
