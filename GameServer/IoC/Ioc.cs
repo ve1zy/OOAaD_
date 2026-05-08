@@ -39,4 +39,10 @@ public static class Ioc
 
         throw new InvalidOperationException($"Strategy '{key}' not registered");
     }
+
+    public static void Clear()
+    {
+        _dependencies.Clear();
+        _strategies.Clear();
+    }
 }
