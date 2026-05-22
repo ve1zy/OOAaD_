@@ -1,9 +1,9 @@
 using Xunit;
 using Moq;
 using GameServer.Interfaces;
-using SpaceGame.Commands;
+using GameServer.Commands;
 
-namespace SpaceGame.Tests
+namespace GameServer.Tests
 {
     [Collection("IoC Tests")]
     public class CommandInjectableCommandTests
