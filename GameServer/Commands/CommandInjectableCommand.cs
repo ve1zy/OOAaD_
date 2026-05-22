@@ -2,7 +2,7 @@
 using System;
 using GameServer.Interfaces;
 
-namespace SpaceGame.Commands
+namespace GameServer.Commands
 {
     public class CommandInjectableCommand : ICommand, ICommandInjectable
     {
