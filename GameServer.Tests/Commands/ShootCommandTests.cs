@@ -32,6 +32,28 @@ public class ShootCommandTests
     }
 
     [Fact]
+    public void ShootCommand_CreatesTorpedo_WithGeneratedId_WhenIdNotProvided()
+    {
+        // Arrange
+        var ship = new Mock<IShip>();
+        ship.Setup(s => s.Id).Returns("ship1");
+        ship.Setup(s => s.Position).Returns(new Vector(10, 20));
+        ship.Setup(s => s.Velocity).Returns(new Vector(1, 0));
+        ship.Setup(s => s.CanShoot).Returns(true);
+        
+        var repository = new GameObjectsRepository();
+        
+        var command = new ShootCommand(ship.Object, repository);
+        
+        // Act
+        command.Execute();
+        
+        // Assert - check that a torpedo was added (we don't know the generated ID)
+        var allTorpedoes = repository.GetAll<ITorpedo>().ToList();
+        Assert.Single(allTorpedoes);
+    }
+
+    [Fact]
     public void ShootCommand_ThrowsException_WhenShipCannotShoot()
     {
         // Arrange

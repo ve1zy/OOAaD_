@@ -10,11 +10,11 @@ public class ShootCommand : ICommand
     private readonly IGameObjectsRepository _repository;
     private readonly string _torpedoId;
 
-    public ShootCommand(IShip ship, IGameObjectsRepository repository, string torpedoId = null)
+    public ShootCommand(IShip ship, IGameObjectsRepository repository, string torpedoId = "")
     {
         _ship = ship ?? throw new ArgumentNullException(nameof(ship));
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-        _torpedoId = torpedoId ?? Guid.NewGuid().ToString();
+        _torpedoId = string.IsNullOrEmpty(torpedoId) ? Guid.NewGuid().ToString() : torpedoId;
     }
 
     public void Execute()
