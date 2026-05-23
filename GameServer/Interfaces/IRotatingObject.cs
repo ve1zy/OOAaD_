@@ -5,8 +5,8 @@ namespace GameServer.Interfaces
 {
     public interface IRotatingObject
     {
-        Angle Angle { get; }
-        Angle AngularVelocity { get; }
+        Angle? Angle { get; }
+        Angle? AngularVelocity { get; }
         void SetAngle(Angle angle);
     }
 }

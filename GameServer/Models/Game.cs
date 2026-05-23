@@ -1,3 +1,4 @@
+#nullable enable
 using GameServer.Interfaces;
 using GameServer.Repositories;
 
@@ -21,7 +22,7 @@ public class Game
         }
     }
 
-    public T GetObject<T>(string id) where T : class
+    public T? GetObject<T>(string id) where T : class
     {
         return _repository.Get<T>(id);
     }

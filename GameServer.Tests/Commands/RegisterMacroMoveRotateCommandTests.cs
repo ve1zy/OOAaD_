@@ -1,5 +1,6 @@
 #nullable disable
 using GameServer.Commands;
+using GameServer.IoC;
 using GameServer.Interfaces;
 using GameServer.Models;
 using Xunit;
@@ -36,8 +37,8 @@ public class RegisterMacroMoveRotateCommandTests
 
     private class MockRotatingObject : IRotatingObject
     {
-        public Angle Angle { get; set; }
-        public Angle AngularVelocity { get; set; }
+        public Angle? Angle { get; set; }
+        public Angle? AngularVelocity { get; set; }
         
         public void SetAngle(Angle angle)
         {

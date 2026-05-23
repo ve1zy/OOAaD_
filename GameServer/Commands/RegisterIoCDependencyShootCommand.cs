@@ -1,3 +1,4 @@
+#nullable enable
 using GameServer.Interfaces;
 using GameServer.Models;
 using GameServer.Repositories;
@@ -13,9 +14,9 @@ public class RegisterIoCDependencyShootCommand : ICommand
         IoC.Ioc.Register("Services.Authorization", (args) => new AuthorizationService());
         IoC.Ioc.Register("Commands.Shoot", (args) =>
         {
-            var ship = args[0] as IShip;
+            var ship = args.Length > 0 ? args[0] as IShip : null;
             var repository = (IGameObjectsRepository)IoC.Ioc.Resolve("Repositories.GameObjects");
-            return new ShootCommand(ship, repository);
+            return new ShootCommand(ship!, repository);
         });
     }
 }

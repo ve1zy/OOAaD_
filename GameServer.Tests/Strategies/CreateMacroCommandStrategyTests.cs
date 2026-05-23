@@ -1,5 +1,6 @@
 #nullable disable
 using GameServer.Commands;
+using GameServer.IoC;
 using GameServer.Interfaces;
 using GameServer.Strategies;
 using Xunit;

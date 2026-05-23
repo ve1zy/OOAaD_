@@ -1,3 +1,4 @@
+#nullable enable
 using GameServer.Interfaces;
 using GameServer.Models;
 using GameServer.Repositories;
@@ -22,6 +23,7 @@ public class GameTests
         
         // Assert
         var updatedTorpedo = repository.Get<ITorpedo>("t1");
+        Assert.NotNull(updatedTorpedo);
         Assert.Equal(new Vector(1, 1), updatedTorpedo.Position);
     }
 }
