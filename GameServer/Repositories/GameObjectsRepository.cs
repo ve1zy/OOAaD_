@@ -4,7 +4,7 @@ public class GameObjectsRepository : IGameObjectsRepository
 {
     private readonly Dictionary<string, object> _objects = new();
 
-    public T Get<T>(string id) where T : class
+    public T? Get<T>(string id) where T : class
     {
         if (_objects.TryGetValue(id, out var obj))
         {

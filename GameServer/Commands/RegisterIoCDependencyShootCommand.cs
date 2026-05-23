@@ -14,7 +14,7 @@ public class RegisterIoCDependencyShootCommand : ICommand
         IoC.Ioc.Register("Commands.Shoot", (args) =>
         {
             var ship = args[0] as IShip;
-            var repository = IoC.Ioc.Resolve<IGameObjectsRepository>("Repositories.GameObjects");
+            var repository = (IGameObjectsRepository)IoC.Ioc.Resolve("Repositories.GameObjects");
             return new ShootCommand(ship, repository);
         });
     }
