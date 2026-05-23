@@ -48,16 +48,32 @@ public class IocTests
     }
 
     [Fact]
-    public void Resolve_WithDirectObject_IgnoresPassedArgs()
+    public void Resolve_String_WhenOnlyStrategyRegistered_CallsWithEmptyArgs()
     {
         Ioc.Clear();
-        var directObj = new object();
-        Ioc.Register("DirectKey", directObj);
+        // Регистрируем ТОЛЬКО как стратегию (не как обычный объект)
+        Ioc.Register("StrategyOnly", (args) => {
+            // Проверяем, что стратегия вызвана с пустым массивом
+            Assert.Empty(args);
+            return "strategy_result";
+        });
+        
+        // Вызываем Resolve БЕЗ аргументов
+        var result = Ioc.Resolve("StrategyOnly");
+        
+        Assert.Equal("strategy_result", result);
+    }
 
-        // Передаём аргументы, но должен вернуться прямой объект без вызова стратегии
-        var result = Ioc.Resolve("DirectKey", "ignored_arg");
-
-        Assert.Same(directObj, result);
+    [Fact]
+    public void Resolve_WithArgs_WhenKeyOnlyInDependencies_Throws()
+    {
+        Ioc.Clear();
+        // Регистрируем как обычный объект (попадает в _dependencies)
+        Ioc.Register("DirectKey", new object());
+        
+        // Resolve(string, args) ищет ТОЛЬКО в _strategies, поэтому должен выбросить исключение
+        Assert.Throws<InvalidOperationException>(() => 
+            Ioc.Resolve("DirectKey", "any_arg"));
     }
 
     [Fact]
