@@ -23,16 +23,6 @@ public class RotateCommand : ICommand
         var angle = _rotatingObject.Angle;
         var angularVelocity = _rotatingObject.AngularVelocity;
 
-        if (angle == null)
-        {
-            throw new ArgumentException("Cannot determine angle of rotating object");
-        }
-
-        if (angularVelocity == null)
-        {
-            throw new ArgumentException("Cannot determine angular velocity of rotating object");
-        }
-
         var newAngle = angle + angularVelocity;
         _rotatingObject.SetAngle(newAngle);
     }
