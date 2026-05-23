@@ -1,29 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj": {}
+    "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj": {
+    "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
+        "projectUniqueName": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
         "projectName": "GameServer",
-        "projectPath": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\OOAaD_\\GameServer\\obj\\",
+        "projectPath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
+        "packagesPath": "C:\\Users\\Жуковки\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Жуковки\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net8.0": {
+            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -37,10 +35,12 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "imports": [
             "net461",
@@ -53,12 +53,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.27, 8.0.27]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.27, 8.0.27]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.27, 8.0.27]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

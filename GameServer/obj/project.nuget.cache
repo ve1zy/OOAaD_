@@ -1,8 +1,42 @@
 {
   "version": 2,
-  "dgSpecHash": "PFjOp/BTTJQ=",
-  "success": true,
-  "projectFilePath": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
+  "dgSpecHash": "dE8OAaWTBQA=",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Не удалось разрешить \"Microsoft.NETCore.App.Ref (= 8.0.27)\" для \"net8.0\".",
+      "projectPath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
+      "filePath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
+      "libraryId": "Microsoft.NETCore.App.Ref",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Не удалось разрешить \"Microsoft.WindowsDesktop.App.Ref (= 8.0.27)\" для \"net8.0\".",
+      "projectPath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
+      "filePath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
+      "libraryId": "Microsoft.WindowsDesktop.App.Ref",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1100",
+      "level": "Error",
+      "message": "Не удалось разрешить \"Microsoft.AspNetCore.App.Ref (= 8.0.27)\" для \"net8.0\".",
+      "projectPath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
+      "filePath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
+      "libraryId": "Microsoft.AspNetCore.App.Ref",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

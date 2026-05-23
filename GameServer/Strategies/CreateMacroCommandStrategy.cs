@@ -1,5 +1,6 @@
 #nullable disable
 using GameServer.Interfaces;
+using System.Linq;
 
 namespace GameServer.Strategies;
 
@@ -12,21 +13,15 @@ public class CreateMacroCommandStrategy
             throw new ArgumentException("Command keys cannot be null or empty");
         }
 
-        var commands = new ICommand[commandKeys.Length];
-        for (int i = 0; i < commandKeys.Length; i++)
+        var commands = commandKeys.Select((key, index) =>
         {
-            if (commandKeys[i] == null)
-            {
-                throw new ArgumentException($"Command key at index {i} cannot be null or empty");
-            }
-
-            var commandKey = commandKeys[i].ToString();
+            if (key == null)
+                throw new ArgumentException($"Command key at index {index} cannot be null or empty");
+            var commandKey = key.ToString();
             if (string.IsNullOrEmpty(commandKey))
-            {
-                throw new ArgumentException($"Command key at index {i} cannot be null or empty");
-            }
-            commands[i] = (ICommand)IoC.Ioc.Resolve(commandKey);
-        }
+                throw new ArgumentException($"Command key at index {index} cannot be null or empty");
+            return (ICommand)IoC.Ioc.Resolve(commandKey);
+        }).ToArray();
 
         return new Commands.MacroCommand(commands);
     }
