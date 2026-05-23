@@ -35,4 +35,39 @@ public class IocTests
         Ioc.Clear();
         Assert.Throws<InvalidOperationException>(() => Ioc.Resolve("UnregisteredKey"));
     }
+    [Fact]
+    public void Resolve_WithStrategyAndArgs_InvokesStrategy()
+    {
+        Ioc.Clear();
+        // Регистрируем стратегию, ожидающую аргументы
+        Ioc.Register("StrategyKey", (args) => $"Processed: {args[0]}");
+
+        var result = Ioc.Resolve("StrategyKey", "input_data");
+
+        Assert.Equal("Processed: input_data", result);
+    }
+
+    [Fact]
+    public void Resolve_WithDirectObject_IgnoresPassedArgs()
+    {
+        Ioc.Clear();
+        var directObj = new object();
+        Ioc.Register("DirectKey", directObj);
+
+        // Передаём аргументы, но должен вернуться прямой объект без вызова стратегии
+        var result = Ioc.Resolve("DirectKey", "ignored_arg");
+
+        Assert.Same(directObj, result);
+    }
+
+    [Fact]
+    public void Resolve_WithEmptyArgsArray_DoesNotFail()
+    {
+        Ioc.Clear();
+        Ioc.Register("EmptyArgsKey", (args) => args?.Length ?? -1);
+
+        var result = Ioc.Resolve("EmptyArgsKey", Array.Empty<object>());
+
+        Assert.Equal(0, result);
+    }
 }
