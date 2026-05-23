@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0.8437" branch-rate="0.7916" version="1.9" timestamp="1776596743" lines-covered="27" lines-valid="32" branches-covered="19" branches-valid="24">
+  <sources>
+    <source>C:\</source>
+  </sources>
+  <packages>
+    <package name="GameServer" line-rate="0.8437" branch-rate="0.7916" complexity="27">
+      <classes>
+        <class name="GameServer.Models.Vector" filename="Users\PC\OOAaD_\GameServer\Models\Vector.cs" line-rate="0.8437" branch-rate="0.7916" complexity="27">
+          <methods>
+            <method name="get_Dimensions" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="17" hits="20" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Item" signature="(System.Int32)" line-rate="0.6666" branch-rate="0.5" complexity="4">
+              <lines>
+                <line number="23" hits="21" branch="True" condition-coverage="50% (2/4)">
+                  <conditions>
+                    <condition number="2" type="jump" coverage="50%" />
+                    <condition number="13" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="25" hits="0" branch="False" />
+                <line number="27" hits="21" branch="False" />
+              </lines>
+            </method>
+            <method name="op_Addition" signature="(GameServer.Models.Vector,GameServer.Models.Vector)" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="33" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="12" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="35" hits="1" branch="False" />
+                <line number="38" hits="1" branch="False" />
+                <line number="39" hits="6" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="70" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="41" hits="2" branch="False" />
+                <line number="44" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name="Equals" signature="(System.Object)" line-rate="0.75" branch-rate="0.75" complexity="8">
+              <lines>
+                <line number="49" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="8" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="51" hits="0" branch="False" />
+                <line number="54" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="24" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="56" hits="0" branch="False" />
+                <line number="59" hits="14" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="61" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="61" hits="6" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="46" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="63" hits="1" branch="False" />
+                <line number="67" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name="op_Equality" signature="(GameServer.Models.Vector,GameServer.Models.Vector)" line-rate="0.6666" branch-rate="0.5" complexity="2">
+              <lines>
+                <line number="72" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="1" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="74" hits="0" branch="False" />
+                <line number="77" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="op_Inequality" signature="(GameServer.Models.Vector,GameServer.Models.Vector)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="82" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name="GetHashCode" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="87" hits="2" branch="False" />
+                <line number="88" hits="16" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="33" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="90" hits="6" branch="False" />
+                <line number="92" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="ToString" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="97" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Int32[])" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="7" hits="13" branch="False" />
+                <line number="9" hits="13" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="7" type="jump" coverage="100%" />
+                    <condition number="11" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="11" hits="1" branch="False" />
+                <line number="14" hits="12" branch="False" />
+                <line number="15" hits="12" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="20" branch="False" />
+            <line number="23" hits="21" branch="True" condition-coverage="50% (2/4)">
+              <conditions>
+                <condition number="2" type="jump" coverage="50%" />
+                <condition number="13" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="25" hits="0" branch="False" />
+            <line number="27" hits="21" branch="False" />
+            <line number="33" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="12" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="35" hits="1" branch="False" />
+            <line number="38" hits="1" branch="False" />
+            <line number="39" hits="6" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="70" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="41" hits="2" branch="False" />
+            <line number="44" hits="1" branch="False" />
+            <line number="49" hits="2" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="8" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="51" hits="0" branch="False" />
+            <line number="54" hits="2" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="24" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="56" hits="0" branch="False" />
+            <line number="59" hits="14" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="61" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="61" hits="6" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="46" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="63" hits="1" branch="False" />
+            <line number="67" hits="1" branch="False" />
+            <line number="72" hits="2" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="1" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="74" hits="0" branch="False" />
+            <line number="77" hits="2" branch="False" />
+            <line number="82" hits="1" branch="False" />
+            <line number="87" hits="2" branch="False" />
+            <line number="88" hits="16" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="33" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="90" hits="6" branch="False" />
+            <line number="92" hits="2" branch="False" />
+            <line number="97" hits="0" branch="False" />
+            <line number="7" hits="13" branch="False" />
+            <line number="9" hits="13" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="7" type="jump" coverage="100%" />
+                <condition number="11" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="11" hits="1" branch="False" />
+            <line number="14" hits="12" branch="False" />
+            <line number="15" hits="12" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>

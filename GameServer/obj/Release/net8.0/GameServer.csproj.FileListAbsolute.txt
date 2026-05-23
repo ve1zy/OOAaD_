@@ -1,0 +1,12 @@
+C:\Users\PC\OOAaD_\GameServer\bin\Release\net8.0\GameServer.deps.json
+C:\Users\PC\OOAaD_\GameServer\bin\Release\net8.0\GameServer.dll
+C:\Users\PC\OOAaD_\GameServer\bin\Release\net8.0\GameServer.pdb
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.AssemblyInfoInputs.cache
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.AssemblyInfo.cs
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.sourcelink.json
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.dll
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\refint\GameServer.dll
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.pdb
+C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\ref\GameServer.dll
