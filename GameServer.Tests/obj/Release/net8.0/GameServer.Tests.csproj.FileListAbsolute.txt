@@ -101,3 +101,6 @@ C:\Users\PC\OOAaD_\GameServer.Tests\obj\Release\net8.0\refint\GameServer.Tests.d
 C:\Users\PC\OOAaD_\GameServer.Tests\obj\Release\net8.0\GameServer.Tests.pdb
 C:\Users\PC\OOAaD_\GameServer.Tests\obj\Release\net8.0\GameServer.Tests.genruntimeconfig.cache
 C:\Users\PC\OOAaD_\GameServer.Tests\obj\Release\net8.0\ref\GameServer.Tests.dll
+C:\Users\Жуковки\OOAaD_\GameServer.Tests\obj\Release\net8.0\GameServer.Tests.dll
+C:\Users\Жуковки\OOAaD_\GameServer.Tests\obj\Release\net8.0\refint\GameServer.Tests.dll
+C:\Users\Жуковки\OOAaD_\GameServer.Tests\obj\Release\net8.0\GameServer.Tests.pdb
