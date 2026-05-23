@@ -1,42 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GZcPyQkkLf4=",
-  "success": false,
-  "projectFilePath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
+  "dgSpecHash": "PFjOp/BTTJQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Не удалось разрешить \"Microsoft.NETCore.App.Ref (= 7.0.20)\" для \"net7.0\".",
-      "projectPath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
-      "filePath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
-      "libraryId": "Microsoft.NETCore.App.Ref",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Не удалось разрешить \"Microsoft.WindowsDesktop.App.Ref (= 7.0.20)\" для \"net7.0\".",
-      "projectPath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
-      "filePath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
-      "libraryId": "Microsoft.WindowsDesktop.App.Ref",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1100",
-      "level": "Error",
-      "message": "Не удалось разрешить \"Microsoft.AspNetCore.App.Ref (= 7.0.20)\" для \"net7.0\".",
-      "projectPath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
-      "filePath": "C:\\Users\\Жуковки\\OOAaD_\\GameServer\\GameServer.csproj",
-      "libraryId": "Microsoft.AspNetCore.App.Ref",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }

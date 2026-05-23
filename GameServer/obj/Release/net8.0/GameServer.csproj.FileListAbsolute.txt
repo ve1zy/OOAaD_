@@ -10,6 +10,3 @@ C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.dll
 C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\refint\GameServer.dll
 C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\GameServer.pdb
 C:\Users\PC\OOAaD_\GameServer\obj\Release\net8.0\ref\GameServer.dll
-C:\Users\Жуковки\OOAaD_\GameServer\obj\Release\net8.0\GameServer.dll
-C:\Users\Жуковки\OOAaD_\GameServer\obj\Release\net8.0\refint\GameServer.dll
-C:\Users\Жуковки\OOAaD_\GameServer\obj\Release\net8.0\GameServer.pdb
