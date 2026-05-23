@@ -14,16 +14,14 @@ public class RegisterMacroMoveRotateCommandTests
         IoC.Ioc.Clear();
         var mockMovableObject = new MockMovableObject();
         var mockRotatingObject = new MockRotatingObject();
-        var position = new Vector(1, 2, 3);
         
         IoC.Ioc.Register("TestMovableObject", (args) => mockMovableObject);
-        IoC.Ioc.Register("TestPosition", (args) => position);
         IoC.Ioc.Register("TestRotatingObject", (args) => mockRotatingObject);
         
         var registerCommand = new RegisterMacroMoveRotateCommand();
         registerCommand.Execute();
         
-        var macroMove = (MacroCommand)IoC.Ioc.Resolve("Macro.Move", "TestMovableObject", "TestPosition");
+        var macroMove = (MacroCommand)IoC.Ioc.Resolve("Macro.Move", "TestMovableObject");
         Assert.NotNull(macroMove);
         
         var macroRotate = (MacroCommand)IoC.Ioc.Resolve("Macro.Rotate", "TestRotatingObject");
@@ -32,12 +30,8 @@ public class RegisterMacroMoveRotateCommandTests
 
     private class MockMovableObject : IMovingObject
     {
-        public Vector? LastPosition { get; private set; }
-        
-        public void Move(Vector position)
-        {
-            LastPosition = position;
-        }
+        public Vector Position { get; set; } = new Vector(0, 0);
+        public Vector Velocity { get; set; } = new Vector(1, 0);
     }
 
     private class MockRotatingObject : IRotatingObject
