@@ -1,4 +1,5 @@
 using GameServer.Interfaces;
+using GameServer.Models;
 
 namespace GameServer.Commands;
 
