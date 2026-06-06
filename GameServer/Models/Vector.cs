@@ -1,8 +1,6 @@
-using System.Linq;
-
 namespace GameServer.Models;
 
-public class Vector : IEquatable<Vector>
+public class Vector
 {
     private readonly int[] _components;
 
@@ -46,14 +44,9 @@ public class Vector : IEquatable<Vector>
         return new Vector(result);
     }
 
-    public bool Equals(Vector? other)
+    public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(this, other))
-        {
-            return true;
-        }
-
-        if (ReferenceEquals(other, null))
+        if (obj is not Vector other)
         {
             return false;
         }
@@ -63,14 +56,25 @@ public class Vector : IEquatable<Vector>
             return false;
         }
 
-        return _components.SequenceEqual(other._components);
-    }
+        for (int i = 0; i < Dimensions; i++)
+        {
+            if (this[i] != other[i])
+            {
+                return false;
+            }
+        }
 
-    public override bool Equals(object? obj) => Equals(obj as Vector);
+        return true;
+    }
 
     public static bool operator ==(Vector a, Vector b)
     {
-        return object.Equals(a, b);
+        if (ReferenceEquals(a, null))
+        {
+            return ReferenceEquals(b, null);
+        }
+
+        return a.Equals(b);
     }
 
     public static bool operator !=(Vector a, Vector b)
@@ -80,7 +84,12 @@ public class Vector : IEquatable<Vector>
 
     public override int GetHashCode()
     {
-        return _components.Aggregate(17, (hash, component) => hash * 31 + component);
+        int hash = 17;
+        foreach (var component in _components)
+        {
+            hash = hash * 31 + component;
+        }
+        return hash;
     }
 
     public override string ToString()

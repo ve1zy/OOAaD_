@@ -2,6 +2,9 @@ name: CI
 
 on:
   pull_request:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-test-coverage:
@@ -21,11 +24,8 @@ jobs:
       
     - name: Build
       run: dotnet build GameServer.sln --configuration Release --no-restore
-      
-    - name: Test
-      run: dotnet test GameServer.sln --configuration Release --no-build --verbosity normal
-      
-    - name: Collect coverage
+
+    - name: Test (with coverage)
       run: dotnet test GameServer.sln --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage"
       
     - name: Generate coverage report
@@ -36,12 +36,22 @@ jobs:
         reporttypes: 'Html;Cobertura'
         
     - name: Check coverage threshold
+      shell: bash
       run: |
+        set -euo pipefail
+
+        if [[ ! -f "coverage-report/Cobertura.xml" ]]; then
+          echo "Coverage report not found at coverage-report/Cobertura.xml"
+          exit 1
+        fi
+
         coverage=$(grep -oP 'line-rate="\K[0-9.]+' coverage-report/Cobertura.xml | head -1)
         coverage_percent=$(echo "$coverage * 100" | bc)
         echo "Coverage: $coverage_percent%"
+
         if (( $(echo "$coverage_percent < 90" | bc -l) )); then
           echo "Coverage ($coverage_percent%) is below 90% threshold"
           exit 1
         fi
+
         echo "Coverage ($coverage_percent%) meets 90% threshold"

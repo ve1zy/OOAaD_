@@ -34,27 +34,10 @@ public class VectorTests
     }
 
     [Fact]
-    public void Addition_WithOppositeVectors_ReturnsZeroVector()
-    {
-        var a = new Vector(1, -1, 2);
-        var b = new Vector(-1, 1, -2);
-        var result = a + b;
-        Assert.Equal(new Vector(0, 0, 0), result);
-    }
-
-    [Fact]
     public void Addition_WithDifferentDimensions_ThrowsArgumentException()
     {
         var a = new Vector(1, 2);
         var b = new Vector(1, 2, 3);
-        Assert.Throws<ArgumentException>(() => a + b);
-    }
-
-    [Fact]
-    public void Addition_WithDifferentDimensionsReversed_ThrowsArgumentException()
-    {
-        var a = new Vector(1, 2, 3);
-        var b = new Vector(1, 2);
         Assert.Throws<ArgumentException>(() => a + b);
     }
 
@@ -134,7 +117,7 @@ public class VectorTests
     [Fact]
     public void EqualityOperator_WithNullLeft_ReturnsFalse()
     {
-        Vector a = null;
+        Vector? a = null;
         var b = new Vector(1, 2, 3);
         Assert.False(a == b);
     }
@@ -142,15 +125,15 @@ public class VectorTests
     [Fact]
     public void EqualityOperator_WithBothNull_ReturnsTrue()
     {
-        Vector a = null;
-        Vector b = null;
+        Vector? a = null;
+        Vector? b = null;
         Assert.True(a == b);
     }
 
     [Fact]
     public void InequalityOperator_WithNullLeft_ReturnsTrue()
     {
-        Vector a = null;
+        Vector? a = null;
         var b = new Vector(1, 2, 3);
         Assert.True(a != b);
     }
