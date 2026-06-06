@@ -212,5 +212,44 @@ namespace GameServer.Tests
             Assert.NotNull(result);
             Assert.IsType<RotateCommand>(result);
         }
+                
+
+        [Fact]
+        public void RegisterIoCDependencyOperationsMoveStart_ShouldRegisterDependency()
+        {
+            new RegisterIoCDependencyOperationsMoveStart().Execute();
+
+            var mockMovable = new Mock<IMovingObject>();
+            var order = new Dictionary<string, object>
+            {
+                ["movableObject"] = mockMovable.Object,
+                ["position"] = new Vector(3, 4)
+            };
+
+            var result = Ioc.Resolve("Operations.move.Start", order);
+            Assert.NotNull(result);
+            Assert.IsType<MoveCommand>(result);
+        }
+
+       
+
+        [Fact]
+        public void RegisterIoCDependencyOperationsRotateStart_ShouldRegisterDependency()
+        {
+            new RegisterIoCDependencyOperationsRotateStart().Execute();
+
+            var mockRotating = new Mock<IRotatingObject>();
+            mockRotating.Setup(r => r.Angle).Returns(new Angle(0, 1));
+            mockRotating.Setup(r => r.AngularVelocity).Returns(new Angle(1, 4));
+
+            var order = new Dictionary<string, object>
+            {
+                ["rotatingObject"] = mockRotating.Object
+            };
+
+            var result = Ioc.Resolve("Operations.rotate.Start", order);
+            Assert.NotNull(result);
+            Assert.IsType<RotateCommand>(result);
+        }
     }
 }
