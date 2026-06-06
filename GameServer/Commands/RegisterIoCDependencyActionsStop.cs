@@ -5,10 +5,7 @@ using GameServer.Commands;
 
 namespace GameServer.IoC
 {
-    /// <summary>
-    /// Регистрация зависимости "Actions.Stop".
-    /// IoC-лямбда ТОЛЬКО создаёт объект (фабрика), вся логика — в StopActionCommand.
-    /// </summary>
+
     public class RegisterIoCDependencyActionsStop : ICommand
     {
         public void Execute()

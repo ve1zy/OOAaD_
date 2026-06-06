@@ -46,10 +46,7 @@ namespace GameServer.Tests
             Assert.Throws<KeyNotFoundException>(() => cmd.Execute());
         }
 
-        /// <summary>
-        /// Критерий приёмки задания 20: остановка выполняется за константное время.
-        /// StopActionCommand НЕ перебирает очередь — только Inject в injectable (O(1)).
-        /// </summary>
+
         [Fact]
         public void Execute_StopIsO1_DoesNotIterateQueue()
         {
@@ -71,7 +68,7 @@ namespace GameServer.Tests
             var cmd = new StopActionCommand(order);
             cmd.Execute();
 
-            // Очередь не изменилась — StopActionCommand её не трогал
+            // Очередь не изменилась - StopActionCommand её не трогал
             Assert.Equal(1000, bigQueue.Count);
         }
 
@@ -100,7 +97,7 @@ namespace GameServer.Tests
             Assert.Single(queue);
             var injectable = (CommandInjectableCommand)queue.Peek();
 
-            // До остановки — injectable выполняет longOp
+            // До остановки - injectable выполняет longOp
             injectable.Execute();
             moveMock.Verify(m => m.Execute(), Times.Once);
 
@@ -113,9 +110,9 @@ namespace GameServer.Tests
             var stopCmd = (ICommand)Ioc.Resolve("Actions.Stop", stopOrder);
             stopCmd.Execute();
 
-            // После остановки — injectable выполняет EmptyCommand, а не longOp
+            
             injectable.Execute();
-            moveMock.Verify(m => m.Execute(), Times.Once); // счетчик НЕ увеличился
+            moveMock.Verify(m => m.Execute(), Times.Once); 
         }
     }
 }
