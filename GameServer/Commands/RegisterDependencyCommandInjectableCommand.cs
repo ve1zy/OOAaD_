@@ -1,4 +1,3 @@
-// RegisterDependencyCommandInjectableCommand.cs
 using GameServer.Interfaces;
 using GameServer.IoC;
 

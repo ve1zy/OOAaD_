@@ -1,4 +1,3 @@
-// CommandInjectableCommand.cs
 using System;
 using GameServer.Interfaces;
 

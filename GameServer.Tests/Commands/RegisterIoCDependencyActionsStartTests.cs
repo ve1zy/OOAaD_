@@ -1,4 +1,3 @@
-// RegisterIoCDependencyActionsStartTests.cs
 using Xunit;
 using System.Collections.Generic;
 using Moq;

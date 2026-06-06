@@ -1,4 +1,3 @@
-// EmptyCommand.cs
 using GameServer.Interfaces;
 
 namespace GameServer.Commands

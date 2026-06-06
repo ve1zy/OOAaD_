@@ -5,10 +5,7 @@ using GameServer.Interfaces;
 
 namespace GameServer.Tests
 {
-    /// <summary>
-    /// Тестовая реализация ICommandInjectable для проверки контракта интерфейса.
-    /// Не используем CommandInjectableCommand — он относится к заданию 17.
-    /// </summary>
+
     public class FakeCommandInjectable : ICommandInjectable
     {
         public ICommand? InjectedCommand { get; private set; }

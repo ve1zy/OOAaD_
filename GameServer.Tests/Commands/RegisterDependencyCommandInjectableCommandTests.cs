@@ -1,4 +1,3 @@
-// RegisterDependencyCommandInjectableCommandTests.cs
 using Xunit;
 using GameServer.Interfaces;
 using GameServer.Commands;

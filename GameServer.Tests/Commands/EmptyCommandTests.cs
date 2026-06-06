@@ -13,6 +13,6 @@ public class EmptyCommandTests
         
         // Act & Assert
         var ex = Record.Exception(() => command.Execute());
-        Assert.Null(ex); // Просто убеждаемся, что метод работает и не падает
+        Assert.Null(ex); 
     }
 }
