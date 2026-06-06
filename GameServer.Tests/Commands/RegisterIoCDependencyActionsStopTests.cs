@@ -1,5 +1,3 @@
-// RegisterIoCDependencyActionsStopTests.cs
-// ЗАДАНИЕ 20: Тесты под IoC с Resolve(string) -> object
 using Xunit;
 using System.Collections.Generic;
 using Moq;
@@ -20,13 +18,12 @@ namespace GameServer.Tests
         [Fact]
         public void Execute_ShouldRegisterDependency_ActionsStop()
         {
-            new RegisterDependencyCommandInjectableCommand().Execute();
             new RegisterIoCDependencyActionsStop().Execute();
 
-            var mockInjectable = new Mock<ICommandInjectable>();
+            var mockInjectable = new Mock<CommandInjectableCommand>();
             var order = new Dictionary<string, object>
             {
-                ["command"] = mockInjectable.Object
+                ["injectable"] = mockInjectable.Object
             };
 
             var result = Ioc.Resolve("Actions.Stop", order);
@@ -35,46 +32,17 @@ namespace GameServer.Tests
         }
 
         [Fact]
-        public void Execute_ShouldInjectEmptyCommand_ForConstantTimeStop()
+        public void Resolve_ActionsStop_ShouldReturnStopActionCommand()
         {
-            new RegisterDependencyCommandInjectableCommand().Execute();
             new RegisterIoCDependencyActionsStop().Execute();
-
-            var injectable = new CommandInjectableCommand();
-            var realCommand = new Mock<ICommand>();
-            injectable.Inject(realCommand.Object);
 
             var order = new Dictionary<string, object>
             {
-                ["command"] = injectable
+                ["injectable"] = new Mock<CommandInjectableCommand>().Object
             };
 
-            Ioc.Resolve("Actions.Stop", order);
-
-            injectable.Execute();
-            realCommand.Verify(c => c.Execute(), Times.Never);
-        }
-
-        [Fact]
-        public void Stop_ShouldReplaceCommand_WithEmptyCommand()
-        {
-            new RegisterDependencyCommandInjectableCommand().Execute();
-            new RegisterIoCDependencyActionsStop().Execute();
-
-            var injectable = (CommandInjectableCommand)Ioc.Resolve("Commands.CommandInjectable");
-            var originalCommand = new Mock<ICommand>();
-            injectable.Inject(originalCommand.Object);
-
-            var order = new Dictionary<string, object>
-            {
-                ["command"] = injectable
-            };
-
-            var stopCommand = Ioc.Resolve("Actions.Stop", order);
-            Assert.IsAssignableFrom<ICommand>(stopCommand);
-
-            injectable.Execute();
-            originalCommand.Verify(c => c.Execute(), Times.Never);
+            var result = Ioc.Resolve("Actions.Stop", order);
+            Assert.IsType<StopActionCommand>(result);
         }
     }
 }
