@@ -16,10 +16,6 @@ namespace GameServer.Tests
             Ioc.Clear();
         }
 
-        /// <summary>
-        /// Критерий приёмки задания 19:
-        /// при выполнении Execute класса RegisterIoCDependencyActionsStart зависимость разрешается.
-        /// </summary>
         [Fact]
         public void Execute_ShouldRegisterDependency_ActionsStart()
         {
