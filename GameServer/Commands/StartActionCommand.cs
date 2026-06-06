@@ -1,7 +1,7 @@
-using GameServer.Interfaces;
-using GameServer.IoC;
 using System.Collections.Generic;
-
+using GameServer.Interfaces;
+using GameServer.Commands;
+using GameServer.IoC;
 
 namespace GameServer.Commands
 {
@@ -25,6 +25,8 @@ namespace GameServer.Commands
             injectableCommand.Inject(longOperationCommand);
 
             queue.Enqueue(injectableCommand);
+
+            _order["injectable"] = injectableCommand;
         }
     }
 }
