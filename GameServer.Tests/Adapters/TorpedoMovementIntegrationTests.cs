@@ -85,18 +85,18 @@ public class TorpedoMovementIntegrationTests
        
         Ioc.Register("Commands.Shoot", (args) => new ShootCommand((string)args[0]));
 
-        //  Act - 
+        //  Act 
         game.HandleOrder(playerId, shipId, "Shoot");
 
         // Assert 
-        Assert.NotNull(createdTorpedoId); // ID сгенерировался
+        Assert.NotNull(createdTorpedoId); 
         
 
         var torpedoInDb = (Torpedo)repository.GetById(createdTorpedoId);
         Assert.NotNull(torpedoInDb);
 
 
-        Assert.Equal(12, torpedoInDb.Position.GetCoordinate(0));
-        Assert.Equal(13, torpedoInDb.Position.GetCoordinate(1));
+        Assert.Equal(12, torpedoInDb.Position[0]);
+        Assert.Equal(13, torpedoInDb.Position[1]);
     }
 }
