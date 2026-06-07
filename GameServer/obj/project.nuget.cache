@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "PFjOp/BTTJQ=",
+  "dgSpecHash": "nwNCVtNF4f0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\prog\\test\\OOAaD_\\GameServer\\GameServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mark\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.27\\microsoft.netcore.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\Mark\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.27\\microsoft.windowsdesktop.app.ref.8.0.27.nupkg.sha512",
+    "C:\\Users\\Mark\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.27\\microsoft.aspnetcore.app.ref.8.0.27.nupkg.sha512"
+  ],
   "logs": []
 }
