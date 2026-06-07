@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj": {}
+    "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj": {
+    "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
+        "projectUniqueName": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj",
         "projectName": "GameServer",
-        "projectPath": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\OOAaD_\\GameServer\\obj\\",
+        "projectPath": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj",
+        "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.421/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

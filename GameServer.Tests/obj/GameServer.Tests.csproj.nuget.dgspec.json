@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\OOAaD_\\GameServer.Tests\\GameServer.Tests.csproj": {}
+    "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer.Tests\\GameServer.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\OOAaD_\\GameServer.Tests\\GameServer.Tests.csproj": {
+    "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer.Tests\\GameServer.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\OOAaD_\\GameServer.Tests\\GameServer.Tests.csproj",
+        "projectUniqueName": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer.Tests\\GameServer.Tests.csproj",
         "projectName": "GameServer.Tests",
-        "projectPath": "C:\\Users\\PC\\OOAaD_\\GameServer.Tests\\GameServer.Tests.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\OOAaD_\\GameServer.Tests\\obj\\",
+        "projectPath": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer.Tests\\GameServer.Tests.csproj",
+        "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj": {
-                "projectPath": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj"
+              "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj": {
+                "projectPath": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj"
               }
             }
           }
@@ -50,6 +50,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.8.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -84,21 +88,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.421/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj": {
+    "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
+        "projectUniqueName": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj",
         "projectName": "GameServer",
-        "projectPath": "C:\\Users\\PC\\OOAaD_\\GameServer\\GameServer.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\OOAaD_\\GameServer\\obj\\",
+        "projectPath": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\GameServer.csproj",
+        "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\Ivan\\Desktop\\Code\\opip\\OOAaD_\\GameServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -142,7 +146,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.421/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

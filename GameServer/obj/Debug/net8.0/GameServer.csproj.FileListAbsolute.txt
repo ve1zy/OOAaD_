@@ -10,3 +10,15 @@ C:\Users\PC\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.dll
 C:\Users\PC\OOAaD_\GameServer\obj\Debug\net8.0\refint\GameServer.dll
 C:\Users\PC\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.pdb
 C:\Users\PC\OOAaD_\GameServer\obj\Debug\net8.0\ref\GameServer.dll
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\bin\Debug\net8.0\GameServer.deps.json
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\bin\Debug\net8.0\GameServer.dll
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\bin\Debug\net8.0\GameServer.pdb
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.AssemblyInfoInputs.cache
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.AssemblyInfo.cs
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.csproj.CoreCompileInputs.cache
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.sourcelink.json
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.dll
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\refint\GameServer.dll
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\GameServer.pdb
+D:\Users\Ivan\Desktop\Code\opip\OOAaD_\GameServer\obj\Debug\net8.0\ref\GameServer.dll
